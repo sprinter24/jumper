@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static Rigidbody player;
+
     void Start()
     {
-        
+        player = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GlobalInput.jump)
+        {
+            player.AddForce(GlobalInput.direction * GlobalInput.force);
+        }
     }
 }
