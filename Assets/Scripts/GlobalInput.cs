@@ -21,8 +21,6 @@ public class GlobalInput : MonoBehaviour
 
     private bool fingerPressed = false;
 
-    private Vector2 secondPosition;
-
     private Ray mouseRay;
 
     void Start()
@@ -33,44 +31,9 @@ public class GlobalInput : MonoBehaviour
 
     void Update()
     {
-        /*
-        jump = false;
-
-        direction = Controller.player.transform.position - Camera.main.transform.position + mouseRay.direction * (planeZ - Camera.main.transform.position.z) / mouseRay.direction.z;
-        force = direction.magnitude;
-
-        if (Input.GetMouseButtonDown(0) && !fingerPressed)
-        {
-            fingerPressed = true;
-        }
-        if(fingerPressed && Input.GetMouseButton(0))
-        {
-            mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            secondPosition = Camera.main.transform.position + mouseRay.direction * (planeZ - Camera.main.transform.position.z) / mouseRay.direction.z;
-            direction = (Vector2)Controller.player.transform.position - secondPosition;
-            force = direction.magnitude * forceCorrection;
-            direction = direction.normalized;
-        }
-        if(fingerPressed && !Input.GetMouseButton(0))
-        {
-            direction = (Vector2) Controller.player.transform.position - secondPosition;
-            force = direction.magnitude * forceCorrection;
-            if(force > maxForce)
-            {
-                force = maxForce;
-                Debug.Log("worked");
-            }
-            direction = direction.normalized;
-            fingerPressed = false;
-            jump = true;
-        }
-        */
-
         JumpCheck();
         SliderBehavior(force, direction);
         testBlock.transform.position = TouchToWorld(); //точка для проверки положения касания
-
-
     }
 
     private void FixedUpdate()
@@ -113,7 +76,7 @@ public class GlobalInput : MonoBehaviour
         if (fingerPressed)
         {
             slider.SetActive(true);
-            slider.transform.localScale = new Vector3(slider.transform.localScale.x, f / maxForce * maxSliderScale, slider.transform.localScale.z);
+            slider.transform.localScale = new Vector3(f / maxForce * maxSliderScale, f / maxForce * maxSliderScale, slider.transform.localScale.z);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             slider.transform.rotation = Quaternion.Euler(0, 0, angle);
         }

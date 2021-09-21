@@ -8,6 +8,7 @@ public class ChunkPlacer : MonoBehaviour
     public Chunk[] ChunkPrefabs;
     public Chunk FirstChunk;
 
+    [SerializeField] private float chunkSpawnDistance = 5f;
     private List<Chunk> SpawnedChunks = new List<Chunk>();
 
     void Start()
@@ -18,7 +19,7 @@ public class ChunkPlacer : MonoBehaviour
     
     void Update()
     {
-        if(Player.position.y > SpawnedChunks[SpawnedChunks.Count - 1].End.position.y - 15)
+        if(Player.position.y > SpawnedChunks[SpawnedChunks.Count - 1].End.position.y - chunkSpawnDistance)
         {
             ChunkSpawn();
         }
