@@ -16,7 +16,8 @@ public class Controller : MonoBehaviour
     {
         if (GlobalInput.jump)
         {
-            player.AddForce(GlobalInput.direction * GlobalInput.force);
+            player.AddForce(GlobalInput.direction.normalized * GlobalInput.force);
+            Debug.Log(GlobalInput.force);
         }
     }
 }
