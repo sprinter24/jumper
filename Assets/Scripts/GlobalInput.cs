@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlobalInput : MonoBehaviour
 {
-    public static Vector2 direction; //ненормализованное
+    public static Vector2 direction; //not normalized
 
     public static float force;
     public static bool jump;
@@ -16,12 +16,16 @@ public class GlobalInput : MonoBehaviour
 
     public GameObject testBlock;
     public GameObject slider;
+    public GameObject firstTouchPointer;
 
     [SerializeField] private float maxSliderScale = 0.5f;
 
     private bool fingerPressed = false;
 
     private Ray mouseRay;
+
+    [SerializeField] private bool jumpFromCube = true;
+    private Vector2 firstPosition;
 
     void Start()
     {
@@ -33,13 +37,18 @@ public class GlobalInput : MonoBehaviour
     {
         JumpCheck();
         SliderBehavior(force, direction);
-        testBlock.transform.position = TouchToWorld(); //точка для проверки положения касания
+
+        testBlock.transform.position = TouchToWorld(); //dot for test touch
     }
 
     private void FixedUpdate()
     {
         FindForce();
-        FindDirection();
+        if (jumpFromCube)
+        {
+            FindDirection();
+        }
+        FindDirectionFromPoint();
     }
 
     private Vector3 TouchToWorld()
@@ -62,8 +71,12 @@ public class GlobalInput : MonoBehaviour
         direction = Controller.player.transform.position - TouchToWorld();
     }
 
+    private void FindDirectionFromPoint()
+    {
+        direction = firstPosition - (Vector2)TouchToWorld();
+    }
 
-    public Vector2 ScreenMouseToWorld(Vector3 mousePos) //не используется
+    public Vector2 ScreenMouseToWorld(Vector3 mousePos) //doesn't use
     {
         mousePos -= new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 0);
         mousePos.x /= Camera.main.pixelWidth;
@@ -75,7 +88,8 @@ public class GlobalInput : MonoBehaviour
     {
         if (fingerPressed)
         {
-            slider.SetActive(true);
+            firstTouchPointer.SetActive(true);
+            slider.SetActive(true); //pointer
             slider.transform.localScale = new Vector3(f / maxForce * maxSliderScale, f / maxForce * maxSliderScale, slider.transform.localScale.z);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             slider.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -83,6 +97,7 @@ public class GlobalInput : MonoBehaviour
         else
         {
             slider.SetActive(false);
+            firstTouchPointer.SetActive(false); //pointer
         }
 
     }
@@ -94,6 +109,8 @@ public class GlobalInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !fingerPressed)
         {
             fingerPressed = true;
+            firstPosition = TouchToWorld();
+            firstTouchPointer.transform.position = firstPosition; //pointer position
         }
         if (fingerPressed && !Input.GetMouseButton(0))
         {
@@ -101,5 +118,6 @@ public class GlobalInput : MonoBehaviour
             jump = true;
         }
     }
+
 
 }
