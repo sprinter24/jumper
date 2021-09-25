@@ -29,7 +29,7 @@ public class Controller : MonoBehaviour
         {
             if (VelocityStand)
             {
-                if(player.velocity == Vector3.zero || shiftPressed)
+                if(player.velocity == Vector3.zero && player.angularVelocity == Vector3.zero || shiftPressed)
                 {
                     player.AddForce(GlobalInput.direction.normalized * GlobalInput.force);
                 }
@@ -56,6 +56,11 @@ public class Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToNextJump);
         canJump = true;
+    }
+
+    public void Die()
+    {
+        Debug.Log("Tak i pomer ded maksim, da i hui ostalcya s nim");
     }
 
 }
