@@ -40,8 +40,6 @@ public class StickySpot : MonoBehaviour
         else
         {
             Physics.gravity = new Vector2(Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), -Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)) * platformGravityScale;
-            Debug.Log(Physics.gravity);
-            Debug.Log(new Vector2(Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), -Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)));
         }
     }
 
