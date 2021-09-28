@@ -61,11 +61,11 @@ public class StickySpot : MonoBehaviour
 
     IEnumerator StopVelocity(Rigidbody player)
     {
-        yield return new WaitForFixedUpdate();
-        player.angularVelocity = Vector3.zero;
-        player.velocity = Vector3.zero;
-        yield return new WaitForFixedUpdate();
-        player.angularVelocity = Vector3.zero;
-        player.velocity = Vector3.zero;
+        for(int i =0; i <= 10; ++i)
+        {
+            yield return new WaitForFixedUpdate();
+            player.angularVelocity = Vector3.zero;
+            player.velocity = Vector3.zero;
+        }
     }
 }
