@@ -7,6 +7,7 @@ public class StickySpot : MonoBehaviour
     private Vector2 normalGravity = new Vector2(0, -1);
     private const float normalGravityScale = 20f;
     private const float platformGravityScale = 50f;
+
     void Start()
     {
         
@@ -24,11 +25,18 @@ public class StickySpot : MonoBehaviour
         {
             Rigidbody player = other.GetComponent<Rigidbody>();
             player.angularVelocity = Vector3.zero;
+            player.velocity = Vector3.zero;
+            Physics.gravity = Vector3.zero;
+
+            StartCoroutine(StopVelocity(player));
+
         }
         catch
         {
             Debug.LogError("Somethinh wrong with sticky platform");
         }
+
+        /*
         if (transform.rotation.z == 90)
         {
             Physics.gravity = new Vector3(-1, 0, 0) * normalGravityScale;
@@ -40,13 +48,24 @@ public class StickySpot : MonoBehaviour
         else
         {
             Physics.gravity = new Vector2(Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), -Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)) * platformGravityScale;
-            Debug.Log(Physics.gravity);
-            Debug.Log(new Vector2(Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), -Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)));
         }
+        */
+
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
         Physics.gravity = normalGravity * normalGravityScale;
+    }
+
+    IEnumerator StopVelocity(Rigidbody player)
+    {
+        yield return new WaitForFixedUpdate();
+        player.angularVelocity = Vector3.zero;
+        player.velocity = Vector3.zero;
+        yield return new WaitForFixedUpdate();
+        player.angularVelocity = Vector3.zero;
+        player.velocity = Vector3.zero;
     }
 }
