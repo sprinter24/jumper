@@ -16,7 +16,7 @@ public class JumpSpot : MonoBehaviour
     
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,9 +26,8 @@ public class JumpSpot : MonoBehaviour
             Rigidbody player = other.GetComponent<Rigidbody>();
             Vector2 direction = player.velocity;
             float force = direction.magnitude;
-            float angleB = 180 - Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
-            Debug.Log(-(180 - 2*angleA - angleB) % 360);
-            player.velocity = new Vector3(Mathf.Cos((180 - 2*angleA -angleB) * Mathf.Deg2Rad), -Mathf.Sin((180 - 2 * angleA - angleB) * Mathf.Deg2Rad), 0) * force * jumpMultiply;
+            float angleB = 90 - Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            player.velocity = new Vector3(Mathf.Cos((180 + 2 * angleA - angleB) * Mathf.Deg2Rad), Mathf.Sin((180 + 2 * angleA - angleB) * Mathf.Deg2Rad), 0) * force * jumpMultiply;
         }
         catch
         {
