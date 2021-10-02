@@ -14,9 +14,7 @@ public class GlobalInput : MonoBehaviour
     [Range(0f, 2000f)] public float maxForce;
     [Range(0f, 200f)] public float forceCorrection = 1f;
 
-    public GameObject testBlock;
     public GameObject slider;
-    public GameObject firstTouchPointer;
 
     [SerializeField] private float maxSliderScale = 0.5f;
 
@@ -35,8 +33,6 @@ public class GlobalInput : MonoBehaviour
     void Update()
     {
         JumpCheck();
-
-        testBlock.transform.position = TouchToWorld(); //dot for test touch
     }
 
     private void FixedUpdate()
@@ -79,7 +75,6 @@ public class GlobalInput : MonoBehaviour
     {
         if (fingerPressed)
         {
-            firstTouchPointer.SetActive(true); //pointer
             slider.transform.localScale = new Vector3(f / maxForce * maxSliderScale, f / maxForce * maxSliderScale, slider.transform.localScale.z);
             float angle = Mathf.Atan2(-dir.x, dir.y) * Mathf.Rad2Deg;
             slider.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -88,7 +83,6 @@ public class GlobalInput : MonoBehaviour
         else
         {
             slider.SetActive(false);
-            firstTouchPointer.SetActive(false); //pointer
         }
 
     }
@@ -100,7 +94,6 @@ public class GlobalInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !fingerPressed)
         {
             firstPosition = TouchToWorld();
-            firstTouchPointer.transform.position = firstPosition; //pointer position
             fingerPressed = true;
         }
         if (fingerPressed && !Input.GetMouseButton(0))

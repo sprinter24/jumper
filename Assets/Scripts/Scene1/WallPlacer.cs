@@ -6,11 +6,9 @@ public class WallPlacer : MonoBehaviour
 {
     [SerializeField] private float distanceToNextWall = 50f;
     [SerializeField] private float distanceBetweenWalls = 22.82f;
-    [SerializeField] private float firstWallY = 2;
     [SerializeField] private int maxWalls = 6;
     [SerializeField] private Transform player;
-
-    private float lastWallPosition = 2f;
+    [SerializeField] private float lastWallPosition;
 
     public GameObject wall;
 
@@ -18,7 +16,7 @@ public class WallPlacer : MonoBehaviour
 
     void Start()
     {
-        
+        wallList.Add(Instantiate(wall, new Vector3(wall.transform.position.x, lastWallPosition, wall.transform.position.z), wall.transform.rotation));
     }
 
     

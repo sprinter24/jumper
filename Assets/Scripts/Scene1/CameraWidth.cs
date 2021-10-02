@@ -4,6 +4,7 @@ public class CameraWidth : MonoBehaviour
 {
     public Vector2 DefaultResolution = new Vector2(720, 1280);
     public Transform player;
+    public Transform lava;
     [Range(0f, 1f)] public float WidthOrHeight = 0;
 
     private Camera componentCamera;
@@ -27,7 +28,14 @@ public class CameraWidth : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(0, player.position.y, transform.position.z);
+        if(lava.position.y >= player.position.y)
+        {
+            transform.position = new Vector3(0, lava.position.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(0, player.position.y, transform.position.z);
+        }
         if (componentCamera.orthographic)
         {
             float constantWidthSize = initialSize * (targetAspect / componentCamera.aspect);
