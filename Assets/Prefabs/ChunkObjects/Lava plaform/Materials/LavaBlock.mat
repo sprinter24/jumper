@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "\u041B\u0430\u0432\u0430 \u0431\u043B\u043E\u043A"
+  m_Name: LavaBlock
   m_Shader: {fileID: 4800000, guid: eb9afa2b617031247ac6bc87e88c9b58, type: 3}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
