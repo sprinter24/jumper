@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManger : MonoBehaviour
 {
     public static bool gameIsPaused = false;
+    public static bool died = false;
 
     public GameObject menuForm;
     void Start()
@@ -20,13 +22,16 @@ public class MenuManger : MonoBehaviour
 
     public void Pause()
     {
-        if (!gameIsPaused)
+        if(!died)
         {
-            OpenMenu();
-        }
-        else
-        {
-            CloseMenu();
+            if (!gameIsPaused)
+            {
+                OpenMenu();
+            }
+            else
+            {
+                CloseMenu();
+            }
         }
     }
 
@@ -56,7 +61,18 @@ public class MenuManger : MonoBehaviour
     }
 
     public void Exit()
-    {
+    { 
         Debug.LogError("пидорас гнида ебаная всю игру сломал");
+    }
+
+    public void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

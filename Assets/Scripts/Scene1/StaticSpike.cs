@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class StaticSpike : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Collider obj;
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -28,4 +22,5 @@ public class StaticSpike : MonoBehaviour
             Debug.LogError("trigger touch other collider, move it somewhere");
         }
     }
+
 }

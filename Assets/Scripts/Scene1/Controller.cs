@@ -5,6 +5,8 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public static Rigidbody player;
+    public DataConroller dataController;
+    public GameObject DieMenu;
 
     [SerializeField] bool VelocityStand = true;
     private bool canJump = true;
@@ -60,6 +62,9 @@ public class Controller : MonoBehaviour
 
     public void Die()
     {
+        dataController.SaveScore();
+        player.gameObject.SetActive(false);
+        DieMenu.SetActive(true);
         Debug.Log("Tak i pomer ded maksim, da i hui ostalcya s nim");
     }
 
