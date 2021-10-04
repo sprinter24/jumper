@@ -5,19 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MenuManger : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    public bool gameIsPaused = false;
     public static bool died = false;
 
+    public DataConroller dataConroller;
     public GameObject menuForm;
     void Start()
     {
-        
-    }
-
-    
-    void Update()
-    {
-        
+        ResumeGame(); // somehow on from menu game pause;
     }
 
     public void Pause()
@@ -60,8 +55,9 @@ public class MenuManger : MonoBehaviour
         gameIsPaused = false;
     }
 
-    public void Exit()
+    public void Exit() // doesn't use
     { 
+
         Debug.LogError("пидорас гнида ебаная всю игру сломал");
     }
 

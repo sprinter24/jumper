@@ -10,21 +10,7 @@ public class GetBestScore : MonoBehaviour
     public Text scoreText;
     void Start()
     {
-        GetLastScore();
         SetBestScore();
-    }
-
-    private void GetLastScore()
-    {
-        try
-        {
-            score = PlayerPrefs.GetInt("Score");
-        }
-        catch
-        {
-            Debug.LogWarning("There wasn't score");
-            score = 0;
-        }
     }
 
     private void SetBestScore()
@@ -33,12 +19,7 @@ public class GetBestScore : MonoBehaviour
         try
         {
             bestScore = PlayerPrefs.GetInt("bestScore");
-            if(bestScore < score)
-            {
-                PlayerPrefs.SetInt("bestScore", score);
-                bestScore = score;
-            }
-            scoreText.text = "BEST SCORE: " + score.ToString();
+            scoreText.text = "BEST SCORE: " + bestScore.ToString();
         }
         catch
         {

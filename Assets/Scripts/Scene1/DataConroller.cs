@@ -7,7 +7,12 @@ public class DataConroller : MonoBehaviour
     public PointsManager pointManager;
     public void SaveScore()
     {
-        PlayerPrefs.SetInt("Score", pointManager.points);
+        int bestScore = PlayerPrefs.GetInt("bestScore");
+        if(bestScore < pointManager.points)
+        {
+            bestScore = pointManager.points;
+        }
+        PlayerPrefs.SetInt("bestScore", bestScore);
         PlayerPrefs.Save();
     }
 }

@@ -62,6 +62,7 @@ public class Controller : MonoBehaviour
 
     public void Die()
     {
+        MenuManger.died = true;
         dataController.SaveScore();
         player.gameObject.SetActive(false);
         DieMenu.SetActive(true);
