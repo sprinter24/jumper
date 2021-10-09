@@ -26,7 +26,7 @@ public class CameraWidth : MonoBehaviour
         horizontalFov = CalcVerticalFov(initialFov, 1 / targetAspect);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(lava.position.y >= player.position.y)
         {

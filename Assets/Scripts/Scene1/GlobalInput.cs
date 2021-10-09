@@ -24,11 +24,6 @@ public class GlobalInput : MonoBehaviour
 
     private Vector2 firstPosition;
 
-    void Start()
-    {
-        
-    }
-
 
     void Update()
     {

@@ -10,7 +10,7 @@ public class Controller : MonoBehaviour
 
     [SerializeField] bool VelocityStand = true;
     private bool canJump = true;
-    private bool shiftPressed = false; // удалить на релизе
+    private bool shiftPressed = false; // delete on release
 
     [SerializeField] float timeToNextJump = 2f;
 
@@ -22,7 +22,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) // удалить на релизе
+        if (Input.GetKeyDown(KeyCode.LeftShift)) // delete on release
         {
             shiftPressed = true;
         }

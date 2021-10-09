@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class MenuManger : MonoBehaviour
 {
     public bool gameIsPaused = false;
+    public bool inOptions = false;
     public static bool died = false;
 
     public DataConroller dataConroller;
     public GameObject menuForm;
+    public GameObject Options;
     void Start()
     {
         ResumeGame(); // somehow on from menu game pause;
@@ -17,7 +19,7 @@ public class MenuManger : MonoBehaviour
 
     public void Pause()
     {
-        if(!died)
+        if(!died && !inOptions)
         {
             if (!gameIsPaused)
             {
@@ -27,6 +29,11 @@ public class MenuManger : MonoBehaviour
             {
                 CloseMenu();
             }
+        }
+        if (inOptions)
+        {
+            ExitFromOptions();
+            CloseMenu();
         }
     }
 
@@ -70,5 +77,19 @@ public class MenuManger : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void GoToOptions()
+    {
+        inOptions = true;
+        menuForm.SetActive(false);
+        Options.SetActive(true);
+    }
+
+    public void ExitFromOptions()
+    {
+        inOptions = false;
+        menuForm.SetActive(true);
+        Options.SetActive(false);
     }
 }

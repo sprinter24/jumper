@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6420177692072730037}
   - component: {fileID: 4960883421126764592}
   m_Layer: 0
-  m_Name: default
+  m_Name: short rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

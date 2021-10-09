@@ -22,7 +22,7 @@ public class WallPlacer : MonoBehaviour
     
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()

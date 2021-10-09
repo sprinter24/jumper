@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3512910677804857363}
   - component: {fileID: 4517571091030089581}
   m_Layer: 0
-  m_Name: default
+  m_Name: midle rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
