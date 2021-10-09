@@ -66,7 +66,6 @@ public class Controller : MonoBehaviour
         dataController.SaveScore();
         player.gameObject.SetActive(false);
         DieMenu.SetActive(true);
-        Debug.Log("Tak i pomer ded maksim, da i hui ostalcya s nim");
     }
 
 }

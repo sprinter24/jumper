@@ -62,12 +62,6 @@ public class MenuManger : MonoBehaviour
         gameIsPaused = false;
     }
 
-    public void Exit() // doesn't use
-    { 
-
-        Debug.LogError("пидорас гнида ебаная всю игру сломал");
-    }
-
     public void ReloadScene()
     {
         Scene scene = SceneManager.GetActiveScene();
