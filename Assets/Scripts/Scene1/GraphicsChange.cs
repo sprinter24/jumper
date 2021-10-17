@@ -27,22 +27,22 @@ public class GraphicsChange : MonoBehaviour
 
     public void WallsOff()
     {
-        MeshRenderer mesh = wallPrefab.transform.GetChild(0).GetComponent<MeshRenderer>();
+        MeshRenderer mesh = wallPrefab.GetComponent<MeshRenderer>();
         mesh.enabled = false;
         for(int i = 0; i < walls.wallList.Count; ++i)
         {
-            MeshRenderer mesh1 = walls.wallList[i].transform.GetChild(0).GetComponent<MeshRenderer>();
+            MeshRenderer mesh1 = walls.wallList[i].GetComponent<MeshRenderer>();
             mesh1.enabled = false;
         }
     }
 
     public void WallsOn()
     {
-        MeshRenderer mesh = wallPrefab.transform.GetChild(0).GetComponent<MeshRenderer>();
+        MeshRenderer mesh = wallPrefab.GetComponent<MeshRenderer>();
         mesh.enabled = true;
         for (int i = 0; i < walls.wallList.Count; ++i)
         {
-            MeshRenderer mesh1 = walls.wallList[i].transform.GetChild(0).GetComponent<MeshRenderer>();
+            MeshRenderer mesh1 = walls.wallList[i].GetComponent<MeshRenderer>();
             mesh1.enabled = true;
         }
     }

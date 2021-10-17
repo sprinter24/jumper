@@ -15,6 +15,7 @@ public class GlobalInput : MonoBehaviour
     [Range(0f, 200f)] public float forceCorrection = 1f;
 
     public GameObject slider;
+    public Camera cam;
 
     [SerializeField] private float maxSliderScale = 0.5f;
 
@@ -23,6 +24,11 @@ public class GlobalInput : MonoBehaviour
     private Ray mouseRay;
 
     private Vector2 firstPosition;
+
+    private void Start()
+    {
+        
+    }
 
 
     void Update()
@@ -42,8 +48,8 @@ public class GlobalInput : MonoBehaviour
 
     private Vector3 TouchToWorld()
     {
-        mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        return Camera.main.transform.position + mouseRay.direction * (planeZ - Camera.main.transform.position.z) / mouseRay.direction.z;
+        mouseRay = cam.ScreenPointToRay(Input.mousePosition);
+        return cam.transform.position + mouseRay.direction * (planeZ - cam.transform.position.z) / mouseRay.direction.z;
     }
 
     private void FindForce()
@@ -53,11 +59,6 @@ public class GlobalInput : MonoBehaviour
         {
             force = maxForce;
         }
-    }
-
-    private void FindDirection()  // don't use
-    {
-        direction = Controller.player.transform.position - TouchToWorld();
     }
 
     private void FindDirectionFromPoint()
