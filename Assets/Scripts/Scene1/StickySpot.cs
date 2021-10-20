@@ -5,15 +5,13 @@ using UnityEngine;
 public class StickySpot : MonoBehaviour
 {
     private Vector2 normalGravity = new Vector2(0, -1);
-    private const float normalGravityScale = 20f;
-    private const float platformGravityScale = 50f;
+    private const float normalGravityScale = 20f; //change in Menu too
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

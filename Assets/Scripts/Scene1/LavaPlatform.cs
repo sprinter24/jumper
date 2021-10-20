@@ -53,13 +53,14 @@ public class LavaPlatform : MonoBehaviour
 
     IEnumerator AddForce(float force, float angle)
     {
-        for(float i = 0; i <= timeBeforeKick * 5; i += Time.fixedDeltaTime)  // here strange thing with fixed update, time need to multiply by 5
+        for(float i = 0; i <= timeBeforeKick; i += Time.fixedDeltaTime)
         {
+            
             if (!inTrigger)
             {
                 yield break;
             }
-            yield return Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
         player.AddForce(force * new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0));
     }

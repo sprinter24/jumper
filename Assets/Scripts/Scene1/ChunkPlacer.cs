@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChunkPlacer : MonoBehaviour
 {
     public Transform Player;
+    public Transform LavaLake;
     public Chunk[] ChunkPrefabs;
     public Chunk FirstChunk;
 
@@ -23,6 +24,11 @@ public class ChunkPlacer : MonoBehaviour
         {
             ChunkSpawn();
         }
+        if(LavaLake.position.y > SpawnedChunks[0].End.transform.position.y)
+        {
+            Destroy(SpawnedChunks[0].gameObject);
+            SpawnedChunks.RemoveAt(0);
+        }
     }
 
     private void ChunkSpawn()
@@ -30,11 +36,5 @@ public class ChunkPlacer : MonoBehaviour
         Chunk NewChunk = Instantiate(ChunkPrefabs[Random.Range(0, ChunkPrefabs.Length)]);
         NewChunk.transform.position = SpawnedChunks[SpawnedChunks.Count - 1].End.position - NewChunk.Begin.localPosition;
         SpawnedChunks.Add(NewChunk);
-
-        if(SpawnedChunks.Count >= 4)
-        {
-            Destroy(SpawnedChunks[0].gameObject);
-            SpawnedChunks.RemoveAt(0);
-        }
     }
 }

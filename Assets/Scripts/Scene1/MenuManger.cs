@@ -7,17 +7,28 @@ public class MenuManger : MonoBehaviour
 {
     public bool gameIsPaused = false;
     public bool inOptions = false;
+    public bool tabsOpen = false;
     public static bool died = false;
 
-    public DataConroller dataConroller;
     public GameObject menuForm;
-    public GameObject Options;
-    void Start()
+    public GameObject optionsForm;
+
+    public void Start()
     {
-        ResumeGame(); // somehow on from menu game pause;
+        died = false;
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!inOptions && !died)
+            {
+                OpenMenu();
+            }
+        }
     }
 
-    public void Pause()
+    public void PauseButton()
     {
         if(!died && !inOptions)
         {
@@ -66,24 +77,29 @@ public class MenuManger : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        Physics.gravity = new Vector2(0, -20);
+        Time.timeScale = 1f;
     }
 
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("Menu");
+        Time.timeScale = 1f;
+        Physics.gravity = new Vector2(0, -20);
     }
 
     public void GoToOptions()
     {
+        PauseGame();
         inOptions = true;
         menuForm.SetActive(false);
-        Options.SetActive(true);
+        optionsForm.SetActive(true);
     }
 
     public void ExitFromOptions()
     {
         inOptions = false;
         menuForm.SetActive(true);
-        Options.SetActive(false);
+        optionsForm.SetActive(false);
     }
 }
