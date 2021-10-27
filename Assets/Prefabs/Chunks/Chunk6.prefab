@@ -57,6 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Begin: {fileID: 8801479155615761150}
   End: {fileID: 7141003687210508215}
+  difficulty: 1
 --- !u!1 &4076066764513273760
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4076066764513273760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.83, z: 0}
+  m_LocalPosition: {x: -2, y: 4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8476318958332457941}
@@ -312,7 +313,7 @@ PrefabInstance:
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.66
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
@@ -552,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.64
+      value: 10.8
       objectReference: {fileID: 0}
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
@@ -562,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 893116455970256540, guid: 632e0852bc5bcf64a9057fd0dcf71208,
         type: 3}
