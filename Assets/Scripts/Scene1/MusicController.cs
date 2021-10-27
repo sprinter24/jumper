@@ -9,6 +9,8 @@ public class MusicController : MonoBehaviour
     [Range(1f, 3f)] public int musicPlaying = 1;
     void Start()
     {
+        source.volume = PlayerPrefs.GetFloat("Volume");
+        musicPlaying = Random.Range(1, 4);
         if(musicPlaying == 1)
         {
             source.clip = music[0];
