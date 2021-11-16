@@ -8772,6 +8772,12 @@ MonoBehaviour:
   - {fileID: 1718418009066237012, guid: 8f4a35828fff9e745b52d7e980846f32, type: 3}
   FirstChunk: {fileID: 5510796063456015847}
   difficultyLevels: 2
+  difficultyIncreseFromHeight: 0.0001
+  minDifficultyHeight: 00000000e8030000d0070000
+  maxFactorOfDifficulty:
+  - 1
+  - 2
+  - 2
   chunkSpawnDistance: 30
   numberOfFirstChunkSpawn: 10
 --- !u!114 &2051299706

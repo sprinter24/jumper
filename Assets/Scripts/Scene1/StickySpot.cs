@@ -34,21 +34,6 @@ public class StickySpot : MonoBehaviour
             Debug.LogError("Somethinh wrong with sticky platform");
         }
 
-        /*
-        if (transform.rotation.z == 90)
-        {
-            Physics.gravity = new Vector3(-1, 0, 0) * normalGravityScale;
-        }
-        else if (transform.rotation.z == 270)
-        {
-            Physics.gravity = new Vector3(1, 0, 0) * normalGravityScale;
-        }
-        else
-        {
-            Physics.gravity = new Vector2(Mathf.Sin(transform.rotation.eulerAngles.z * Mathf.Deg2Rad), -Mathf.Cos(transform.rotation.eulerAngles.z * Mathf.Deg2Rad)) * platformGravityScale;
-        }
-        */
-
         
     }
 
@@ -59,11 +44,16 @@ public class StickySpot : MonoBehaviour
 
     IEnumerator StopVelocity(Rigidbody player)
     {
-        for(int i =0; i <= 10; ++i)
+        for(int i = 0; i <= 10; ++i)
         {
             yield return new WaitForFixedUpdate();
             player.angularVelocity = Vector3.zero;
             player.velocity = Vector3.zero;
         }
+        while (player.velocity == Vector3.zero)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        Physics.gravity = normalGravity * normalGravityScale;
     }
 }
