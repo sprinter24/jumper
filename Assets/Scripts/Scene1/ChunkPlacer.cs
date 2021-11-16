@@ -88,15 +88,28 @@ public class ChunkPlacer : MonoBehaviour
             }
         }  //found difficulty for next chunk
 
-        int nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][Random.Range(0, chunkNumbersByDifficulty.Count)];
+        int nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][Random.Range(0, chunkNumbersByDifficulty[difficultySpawn].Count)];
 
         
         if(spawnedChunksIndex.Count == 0)
         {
-            nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][Random.Range(0, chunkNumbersByDifficulty.Count)];
+            nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][Random.Range(0, chunkNumbersByDifficulty[difficultySpawn].Count)];
         }
         else
         {
+            if(chunkNumbersByDifficulty[difficultySpawn].Contains(spawnedChunksIndex[spawnedChunksIndex.Count - 1]))
+            {
+                List<int> chunkNumbersWith1DifficultyWithoutLast = new List<int>();
+                for(int j = 0; j < chunkNumbersByDifficulty[difficultySpawn].Count; ++j)
+                {
+                    chunkNumbersWith1DifficultyWithoutLast.Add(chunkNumbersByDifficulty[difficultySpawn][j]);
+                }
+                Debug.Log(chunkNumbersByDifficulty[difficultySpawn].Count);
+                chunkNumbersWith1DifficultyWithoutLast.Remove(spawnedChunksIndex[spawnedChunksIndex.Count - 1]);
+                nextChunkIndex = chunkNumbersWith1DifficultyWithoutLast[Random.Range(0, chunkNumbersWith1DifficultyWithoutLast.Count)];
+            }
+
+            /*
             List<int> chunksWith1Difficulty = new List<int>();
             for(int i = 0; i < spawnedChunksIndex.Count; ++i)
             {
@@ -107,11 +120,12 @@ public class ChunkPlacer : MonoBehaviour
             }
             if(chunkNumbersByDifficulty[difficultySpawn].Count == 1)
             {
-                nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][0];
+                nextChunkIndex = chunkNumbersByDifficulty[difficultySpawn][0]; //method to find nextChunkIndex
             }
             else
             {
                 chunksWith1Difficulty.RemoveAt(chunksWith1Difficulty.Count - 1);
+
                 for(int i = 0; i < chunksWith1Difficulty.Count; ++i)
                 {
                     for(int j = i + 1; j < chunksWith1Difficulty.Count; ++j)
@@ -161,6 +175,7 @@ public class ChunkPlacer : MonoBehaviour
                     }
                 }
             }
+            */
         }
 
         Chunk NewChunk = Instantiate(ChunkPrefabs[nextChunkIndex]);
